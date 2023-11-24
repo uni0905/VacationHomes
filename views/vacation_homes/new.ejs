@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center" id="title">New Vacation Home</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/vacation_homes" method="POST" class="needs-validation" novalidate
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title </label>
+                    <input class="form-control" type="text" name="home[title]" id="title" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location </label>
+                    <input class="form-control" type="text" name="home[location]" id="location" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div>
+                    <label class="form-label" for="price">Price </label>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" id="price" aria-label="Amount (to the nearest dollar)"
+                        name="home[price]" required>
+                    <span class="input-group-text">.00</span>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description </label>
+                    <textarea class="form-control" type="text" name="home[description]" id="description"
+                        required></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Add Image(s)</label>
+                    <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>

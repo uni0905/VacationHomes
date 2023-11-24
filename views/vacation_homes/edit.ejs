@@ -1,0 +1,58 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center" id="title">Edit Vacation Home</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/vacation_homes/<%= home._id %>?_method=PUT" method="POST" class="needs-validation" novalidate
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="home[title]" id="title" value="<%=  home.title%>"
+                        required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" name="home[location]" id="location"
+                        value="<%= home.location %>" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div>
+                    <label class="form-label" for="price">Price</label>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" id="price" name="home[price]"
+                        aria-label="Amount (to the nearest dollar)" value="<%= home.price %>" required>
+                    <span class="input-group-text">.00</span>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description </label>
+                    <textarea class="form-control" type="text" name="home[description]" id="description"
+                        required><%= home.description %></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Add More Image(s)</label>
+                    <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                </div>
+                <div class="input-group mb-3">
+                    <% home.images.forEach(function(img, i){ %>
+                        <div class="input-group-text">
+                            <img src="<%= img.thumbnail %>" alt="" class="img-thumbnail">
+                            <input class="form-check-input mt-0" type="checkbox" id="image-<%= i %>"
+                                value="<%= img.filename %>" aria-label="Checkbox for following text input"
+                                name="deleteImages[]">
+                            <label for="image-<%= i %>"> Delete?</label>
+                        </div>
+                        <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
+                        <% }) %>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary">Update</button>
+                    <a class="btn btn-success" href="/vacation_homes/<%= home._id %>">Back to Vacation Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
