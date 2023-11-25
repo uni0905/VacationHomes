@@ -31,7 +31,6 @@ module.exports.createVacationHome = async (req, res, next) => {
 
 module.exports.search = async (req, res) => {
     const result = req.query.search;
-    console.log(result)
     const homes = await Home.find({ title: result });
     if (!homes) {
         req.flash('error', 'Cannot find that vacation home!')
